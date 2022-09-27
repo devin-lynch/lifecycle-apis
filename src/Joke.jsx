@@ -24,9 +24,18 @@ export default class Joke extends Component {
             .catch(console.warn)
     }
 
-    componentDidUpdate() {}
+    // runs everytime the component is being re-rendered
+    componentDidUpdate() {
+        // setting state here can cause an infinite loop
+        console.log('Joke.js did update')
+        // always will have access to accurate state information
+        console.log('Joke.js\'s current state:', this.state)
+    }
 
-    componentWillUnmount() {}
+    // runs when the component is unmounted -- before the next render but after state has been changed
+    componentWillUnmount() {
+        console.info('Joke.js is unmounting!')
+    }
 
     handleChangeJoke = () => {
         const options = {
